@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title>Budgety</title>
+    </head>
+    <body>
+        
+        <div class="top">
+            <div class="budget">
+                <div class="budget__title">
+                    Travel Balance in <span class="budget__title--month">%Month%</span>:
+                </div>
+                
+                <div class="budget__balance">+ 7,777.77</div>
+                
+                <div class="budget__income clearfix">
+                    <div class="budget__income--text">Total Budget</div>
+                    <div class="right">
+                        <div class="budget__income--value">
+                            <input type="number" class="add__budget" placeholder="Please add your budget.">
+                        </div>
+                        <div class="budget__income--percentage">&nbsp;</div>
+                    </div>
+                </div>
+                
+                <div class="budget__expenses clearfix">
+                    <div class="budget__expenses--text">Total Expenses</div>
+                    <div class="right clearfix">
+                        <div class="budget__expenses--value">- 1,111.11</div>
+                        <div class="budget__expenses--percentage">11%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="bottom">
+            <div class="add">
+                <div class="add__container--outer">
+                    <div class="add__container">
+                        <input type="text" class="add__description" placeholder="Add description">
+                        <input type="text" class="add__type" placeholder="Type">
+                        <input type="number" class="add__quantity" placeholder="Quantity">
+                        <input type="number" class="add__unit-cost" placeholder="Unit cost">
+                        <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container clearfix">
+                
+                <div class="expenses">
+                    <h2 class="expenses__title">Expenses</h2>
+                    
+                    <div class="expenses__list">
+                        
+                        <div class="expenses__subtitle clearfix">
+                            <div class="expenses__subtitle--description">Description</div>
+                            <div class="expenses__subtitle--type">transportation</div>
+                            <div class="expenses__subtitle--quantity">quantity</div>
+                            <div class="expenses__subtitle--unit-cost">unit cost</div>
+                            <div class="expenses__subtitle--amount clearfix">Amount</div>
+                        </div>
+                    <!--
+                        <div class="item clearfix" id="expense-0">
+                            <div class="item__description">Flight</div>
+                            <div class="item__type">Transportation</div>
+                            <div class="item__quantity">1</div>
+                            <div class="item__unit-cost">1000</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 900.00</div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item clearfix" id="expense-0">
+                            <div class="item__description">Grocery shopping</div>
+                            <div class="item__type">food</div>
+                            <div class="item__quantity">1</div>
+                            <div class="item__unit-cost">100</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 500.00</div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item clearfix" id="expense-0">
+                            <div class="item__description">Souvenir</div>
+                            <div class="item__type">Shopping</div>
+                            <div class="item__quantity">1</div>
+                            <div class="item__unit-cost">100</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 100.00</div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item clearfix" id="expense-0">
+                            <div class="item__description">Suffing</div>
+                            <div class="item__type">Activity</div>
+                            <div class="item__quantity">1</div>
+                            <div class="item__unit-cost">100</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 100.00</div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item clearfix" id="expense-0">
+                            <div class="item__description">Hotel</div>
+                            <div class="item__type">Accommodation</div>
+                            <div class="item__quantity">1</div>
+                            <div class="item__unit-cost">100</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 100.00</div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    -->
+
+                        <div class="expenses__total clearfix">
+                            <div class="expenses__total__amount clearfix">Total Expenses</div>
+                            <div class="expenses__total__amount-value clearfix">1,000,000</div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <footer class="footer">
+            <p>© 2018 Chanwhe Kim - All Rights Reserved</p>
+        </footer>
+        <script src="app.js"></script>
+    </body>
+</html>
