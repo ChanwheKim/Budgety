@@ -19,7 +19,46 @@ var budgetController = (function() {
         percentage: 0
     }
 
+    return {
+        addItem: function(des, type, qty, price) {
+            var ID, amt, newItem;
+
+            // Create new ID
+            if(data.allItems.length === 0) {
+                ID = 0;
+            } else {
+                ID = data.allItems[data.allItems.length -1].id +1;
+            }
+
+            // Calculate amount
+            amt = qty * price;
+
+            // Create a item
+            newItem = new Expense(ID, des, type, qty, price, amt);
+
+            // Save it to the data structure
+            data.allItems.push(newItem);
+
+            // Return the new item
+            return newItem
+
+        },
+
+        testing: function() {
+            return data;
+        }
+    }
+
 })();
+
+var Expense = function(id, description, type, quantity, unitCost, amount) {
+    this.id = id;
+    this.description = description;
+    this.type = type;
+    this.quantity = quantity;
+    this.unitCost = unitCost;
+    this.amount = amount;
+}
 
 
 // UI CONTROLLER
@@ -66,11 +105,13 @@ var controller = (function(budgetCtrl, UICtrl) {
     }
 
     var ctrlAddItem = function() {
+        var input, newItem;
 
         // 1. Get the field data input
-        var input = UICtrl.getInput();
+        input = UICtrl.getInput();
 
         // 2. Add a new item to data structure
+        newItem = budgetCtrl.addItem(input.description, input.type, input.quantity, input.unitCost);
 
         // 3. Add a new item on the user interface
 
