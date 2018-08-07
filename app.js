@@ -15,13 +15,28 @@ var UIController = (function() {
 // GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, UICtrl) {
 
-    document.querySelector('.add__btn').addEventListener('click', function() {
-        console.log('Button was clicked.')
-    })
+    var ctrlAddItem = function() {
+
+        console.log('It works!')
+        // Get the field data input
+
+        // Add a new item to data structure
+
+        // Add a new item on the user interface
+
+        // Clear the fields
+
+        // Calculate and update budget
+
+        // Calculate and update percentage
+
+    }
+
+    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
     document.addEventListener('keypress', function(event) {
         if(event.keyCode === 13 || event.which === 13) {
-            console.log('Return-key was pressed.');
+            ctrlAddItem();
         }
     })
-    
+
 })(budgetController, UIController);
