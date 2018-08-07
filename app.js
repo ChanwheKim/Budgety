@@ -1,6 +1,23 @@
+
 // BUDGET CONTROLLER
 var budgetController = (function() {
 
+    var Expense = function(id, description, type, quantity, unitCost, amount) {
+        this.id = id;
+        this.description = description;
+        this.type = type;
+        this.quantity = quantity;
+        this.unitCost = unitCost;
+        this.amount = amount;
+    }
+
+    var data = {
+        allItems: [],
+        totalExpenses: 0,
+        budget: undefined,
+        balance: '---',
+        percentage: 0
+    }
 
 })();
 
