@@ -69,7 +69,8 @@ var UIController = (function() {
         inputType: '.add__type',
         inputQuantity: '.add__quantity',
         inputUnitCost: '.add__unit-cost',
-        inputBtn: '.add__btn'
+        inputBtn: '.add__btn',
+        lastLineOfList: '.expenses__total'
     }
     
     return {
@@ -81,6 +82,25 @@ var UIController = (function() {
                 quantity: document.querySelector(DOMstrings.inputQuantity).value,
                 unitCost: document.querySelector(DOMstrings.inputUnitCost).value
             }
+        },
+
+        addListItem: function(obj) {
+            var html, newHtml;
+
+            // Create HTML string with placeholder text
+            html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="item__type">%type%</div><div class="item__quantity">%quantity%</div><div class="item__unit-cost">%unitCost%</div><div class="right clearfix"><div class="item__value">%amount%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+
+            // Replace the placehollder text with actual datas
+            newHtml = html.replace('%id%', obj.id);
+            newHtml = newHtml.replace('%description%', obj.description);
+            newHtml = newHtml.replace('%type%', obj.type);
+            newHtml = newHtml.replace('%quantity%', obj.quantity);
+            newHtml = newHtml.replace('%unitCost%', obj.unitCost);
+            newHtml = newHtml.replace('%amount%', obj.amount);
+
+            // Insert the HTML into the DOM
+            document.querySelector(DOMstrings.lastLineOfList).insertAdjacentHTML('beforebegin', newHtml);
+
         },
 
         getDOMstrings: function() {
@@ -114,6 +134,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         newItem = budgetCtrl.addItem(input.description, input.type, input.quantity, input.unitCost);
 
         // 3. Add a new item on the user interface
+        UICtrl.addListItem(newItem);
 
         // 4. Clear the fields
 
