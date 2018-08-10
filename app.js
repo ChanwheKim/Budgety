@@ -79,8 +79,8 @@ var UIController = (function() {
                 budget: document.querySelector(DOMstrings.inputBudget).value,
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 type: document.querySelector(DOMstrings.inputType).value,
-                quantity: document.querySelector(DOMstrings.inputQuantity).value,
-                unitCost: document.querySelector(DOMstrings.inputUnitCost).value
+                quantity: parseInt(document.querySelector(DOMstrings.inputQuantity).value),
+                unitCost: parseFloat(document.querySelector(DOMstrings.inputUnitCost).value)
             }
         },
 
@@ -139,6 +139,16 @@ var controller = (function(budgetCtrl, UICtrl) {
         })
     }
 
+    var updateBudget = function() {
+
+        // 1. Calculate balance
+
+        // 2. Return the balance
+
+        // 3. Display the budget on the UI
+
+    }
+
     var ctrlAddItem = function() {
         var input, newItem;
 
@@ -155,6 +165,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         UICtrl.clearFeilds();
 
         // 5. Calculate and update budget
+        updateBudget();
 
         // 6. Calculate and update percentage
 
