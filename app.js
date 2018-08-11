@@ -14,9 +14,9 @@ var budgetController = (function() {
     var data = {
         allItems: [],
         totalExpenses: 0,
-        budget: undefined,
+        budget: -1,
         balance: '---',
-        percentage: 0
+        percentage: -1
     }
 
     return {
@@ -41,6 +41,26 @@ var budgetController = (function() {
 
             // Return the new item
             return newItem
+
+        },
+
+        calculateTotalExpenses : function() {
+            var total = 0;
+            data.allItems.forEach(function(cur) {
+                 total += cur.amount;
+            })
+            data.totalExpenses = total;
+        },
+
+        calculateBalance: function(budget) {
+            // 1. Update Budget into data structure
+            data.budget = budget;
+
+            // 3. Calculate balances
+            data.balance = data.budget - data.totalExpenses;
+
+            // 4. Calculate percentage
+            data.percentage = Math.round((data.totalExpenses / data.budget) * 100);
 
         },
 
@@ -76,7 +96,7 @@ var UIController = (function() {
     return {
         getInput: function() {
             return {
-                budget: document.querySelector(DOMstrings.inputBudget).value,
+                budget: parseInt(document.querySelector(DOMstrings.inputBudget).value),
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 type: document.querySelector(DOMstrings.inputType).value,
                 quantity: parseInt(document.querySelector(DOMstrings.inputQuantity).value),
@@ -139,13 +159,14 @@ var controller = (function(budgetCtrl, UICtrl) {
         })
     }
 
-    var updateBudget = function() {
+    var updateBudget = function(budget) {
 
-        // 1. Calculate balance
+        // 1. Update budget and balance
+        budgetCtrl.calculateBalance(budget);
 
-        // 2. Return the balance
+        // 2. Return the datas
 
-        // 3. Display the budget on the UI
+        // 3. Display the budget and balance on the UI
 
     }
 
@@ -164,10 +185,15 @@ var controller = (function(budgetCtrl, UICtrl) {
         // 4. Clear the fields
         UICtrl.clearFeilds();
 
-        // 5. Calculate and update budget
-        updateBudget();
+        // 5. Calculate total expenses
+        budgetController.calculateTotalExpenses();
 
-        // 6. Calculate and update percentage
+        // 6. Update budget and calculate balance
+        if(input.budget > 0) {
+            updateBudget(input.budget);
+        }
+
+        // 7. Calculate and update percentage
 
     }
 
