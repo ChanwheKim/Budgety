@@ -64,6 +64,18 @@ var budgetController = (function() {
 
         },
 
+        getTotalExpenses: function() {
+            return data.totalExpenses
+        },
+
+        getBudget: function() {
+            return {
+                budget: data.budget,
+                balance: data.balance,
+                percentage: data.percentage
+            }
+        },
+
         testing: function() {
             return data;
         }
@@ -90,7 +102,11 @@ var UIController = (function() {
         inputQuantity: '.add__quantity',
         inputUnitCost: '.add__unit-cost',
         inputBtn: '.add__btn',
-        lastLineOfList: '.expenses__total'
+        lastLineOfList: '.expenses__total',
+        expensesLabel: '.budget__expenses--value',
+        expensesLabelSub: '.expenses__total__amount-value',
+        balanceLabel: '.budget__balance',
+        percentageLabel: '.budget__expenses--percentage'
     }
     
     return {
@@ -138,6 +154,16 @@ var UIController = (function() {
             
         },
 
+        displayTotalExpenses: function(total) {
+            document.querySelector(DOMstrings.expensesLabel).textContent = '- ' + total;
+            document.querySelector(DOMstrings.expensesLabelSub).textContent = '- ' + total;
+        },
+
+        displayBudget: function(budget) {
+            document.querySelector(DOMstrings.balanceLabel).textContent = budget.balance;
+            document.querySelector(DOMstrings.percentageLabel).textContent = budget.percentage + '%';
+        },
+
         getDOMstrings: function() {
             return DOMstrings
         }
@@ -159,14 +185,29 @@ var controller = (function(budgetCtrl, UICtrl) {
         })
     }
 
+    var updateExpenses = function() {
+        
+        // 1. Calculate expenses and update into data structure
+        budgetCtrl.calculateTotalExpenses();
+
+        // 2. Return total expenses
+        var totalExpenses = budgetCtrl.getTotalExpenses();
+
+        // 3. Display total expenses on the user interface
+        UICtrl.displayTotalExpenses(totalExpenses);
+
+    }
+
     var updateBudget = function(budget) {
 
         // 1. Update budget and balance
         budgetCtrl.calculateBalance(budget);
 
         // 2. Return the datas
+        var budget = budgetCtrl.getBudget();
 
         // 3. Display the budget and balance on the UI
+        UICtrl.displayBudget(budget);
 
     }
 
@@ -187,8 +228,8 @@ var controller = (function(budgetCtrl, UICtrl) {
             // 4. Clear the fields
             UICtrl.clearFeilds();
     
-            // 5. Calculate total expenses
-            budgetController.calculateTotalExpenses();
+            // 5. Update total expenses
+            updateExpenses();
     
             // 6. Update budget and calculate balance
             if(input.budget > 0) {
@@ -200,7 +241,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         }
 
     }
-    
+
     return {
         init: function() {
             console.log('Chanwhe Kim: the application has started. :)')
