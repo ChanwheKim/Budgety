@@ -176,27 +176,31 @@ var controller = (function(budgetCtrl, UICtrl) {
         // 1. Get the field data input
         input = UICtrl.getInput();
 
-        // 2. Add a new item to data structure
-        newItem = budgetCtrl.addItem(input.description, input.type, input.quantity, input.unitCost);
+        if(input.description !== '' && input.type !== '' && input.quantity > 0 && input.unitCost > 0) {
 
-        // 3. Add a new item on the user interface
-        UICtrl.addListItem(newItem);
+            // 2. Add a new item to data structure
+            newItem = budgetCtrl.addItem(input.description, input.type, input.quantity, input.unitCost);
+    
+            // 3. Add a new item on the user interface
+            UICtrl.addListItem(newItem);
+    
+            // 4. Clear the fields
+            UICtrl.clearFeilds();
+    
+            // 5. Calculate total expenses
+            budgetController.calculateTotalExpenses();
+    
+            // 6. Update budget and calculate balance
+            if(input.budget > 0) {
+                updateBudget(input.budget);
+            }
+    
+            // 7. Calculate and update percentage
 
-        // 4. Clear the fields
-        UICtrl.clearFeilds();
-
-        // 5. Calculate total expenses
-        budgetController.calculateTotalExpenses();
-
-        // 6. Update budget and calculate balance
-        if(input.budget > 0) {
-            updateBudget(input.budget);
         }
 
-        // 7. Calculate and update percentage
-
     }
-
+    
     return {
         init: function() {
             console.log('Chanwhe Kim: the application has started. :)')
