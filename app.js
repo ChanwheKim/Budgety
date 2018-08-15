@@ -236,8 +236,23 @@ var controller = (function(budgetCtrl, UICtrl) {
     }
 
     var ctrlDeleteItem = function(event) {
-        if(event.target.className === 'ion-ios-close-outline') {
-            console.log('Hey, it works!');
+        var itemID, splitID, ID;
+
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+        if (itemID) {
+            
+            splitID = itemID.split('-');
+            ID = splitID[1];
+
+            // 1. Delete the item from the data structure
+            
+    
+            // 2. Delete the item from the UI
+            
+    
+            // 3. Update and show the new budget
+
         }
     };
 
