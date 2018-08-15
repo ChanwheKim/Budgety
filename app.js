@@ -83,16 +83,6 @@ var budgetController = (function() {
 
 })();
 
-var Expense = function(id, description, type, quantity, unitCost, amount) {
-    this.id = id;
-    this.description = description;
-    this.type = type;
-    this.quantity = quantity;
-    this.unitCost = unitCost;
-    this.amount = amount;
-}
-
-
 // UI CONTROLLER
 var UIController = (function() {
     var DOMstrings = {
@@ -106,7 +96,8 @@ var UIController = (function() {
         expensesLabel: '.budget__expenses--value',
         expensesLabelSub: '.expenses__total__amount-value',
         balanceLabel: '.budget__balance',
-        percentageLabel: '.budget__expenses--percentage'
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.expenses__list'
     }
     
     return {
@@ -183,6 +174,8 @@ var controller = (function(budgetCtrl, UICtrl) {
             ctrlAddItem();
             }
         })
+
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     }
 
     var updateExpenses = function() {
@@ -241,6 +234,12 @@ var controller = (function(budgetCtrl, UICtrl) {
         }
 
     }
+
+    var ctrlDeleteItem = function(event) {
+        if(event.target.className === 'ion-ios-close-outline') {
+            console.log('Hey, it works!');
+        }
+    };
 
     return {
         init: function() {

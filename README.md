@@ -1,25 +1,34 @@
-### Budgety
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <style>
+        * {
+            font-family: 'Lato', 'Arial', sans-serif;
+        }
+    </style>
+</head>
+
+## Budgety
 &nbsp;
 <img src='img/budgety__main-picture.png' width='100%' alt=''>
 
-#### Introduction
+### Introduction
 Budgety is a simple but handy application for calculating travel budget
 
-#### Features
+### Features
 - Travel budget calculation
 - Planning your travel budget
 - Customizable categories for expenses
 - Check ratis of expenses to budget
 
-#### Bug / Feature request
+### Bug / Feature request
 If you find a bug, please kindly open an issue here with your expected result.
 
 Should you have a request to add a new function, please feel free to ask me by opening an issue here.
 
-#### Built with
+### Built with
 HTML5, CSS3, Javascript(ES5 only)
 
-#### Planning Step-1
+### Planning Step-1
 <img src='img/Budgety__step-1.jpg' height='400px' width='100%' alt=''>
 Users will input datas such as expenses' description, type, quantity and its value, and hit the input button or return(or enter) key. After that, the application will process datas and display on the user interface. To do this, the following are need to be done.
 <br><br>
@@ -39,7 +48,7 @@ As you can see, some tasks have to do with the user interface and some with inte
 <br>
 <img src='img/Budgety__architecture-step-1.jpg' width='100%' alt=''>
 
-#### License
+### License
 The MIT License (MIT)
 
 The original version of this appication comes from Jonas's online javascript lecture. I jsut revised and added some features. If you want, you can check the original version at https://www.udemy.com/the-complete-javascript-course/?couponCode=C3RESOURCES1010.
