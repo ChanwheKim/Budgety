@@ -20,11 +20,6 @@ Budgety is a simple but handy application for calculating travel budget
 - Customizable categories for expenses
 - Check ratis of expenses to budget
 
-### Bug / Feature request
-If you find a bug, please kindly open an issue here with your expected result.
-
-Should you have a request to add a new function, please feel free to ask me by opening an issue here.
-
 ### Built with
 HTML5, CSS3, Javascript(ES5 only)
 
@@ -46,7 +41,25 @@ In other words, the followings are the tasks that should be built.<br>
 <br>
 As you can see, some tasks have to do with the user interface and some with internal data manipulation. So I could create modules for each of these task-related items. In this case, UI module and Data module. In addition to the two module, I could create a control module to control the entire app and act as a link betweeen the other two modules.
 <br>
+<br>
 <img src='img/Budgety__architecture-step-1.jpg' width='100%' alt=''>
+### Planning Step-2
+<img src='img/Budgety__step-2.jpg' height='400px' width='100%' alt=''>
+In Step-2, I dealt with the functionality of deleting an item from data structure and user interface. I added event handler to the delete button. The application will delete the entire row as soon as the user clicks the delete button as well as from the the data structure.
+<br><br>
+The followings are that I built in this step.<br>
+&nbsp;-Add event handler<br>
+&nbsp;-Delete the item from the data structure<br>
+&nbsp;-Delete the item from the UI<br>
+&nbsp;-re-calculate the budget<br>
+&nbsp;-Update the UI<br>
+<br>
+<img src='img/Budgety__architecture-step-2.jpg' width='100%' alt=''>
+### Planning Step-3
+### Bug / Feature request
+If you find a bug, please kindly open an issue here with your expected result.
+
+Should you have a request to add a new function, please feel free to ask me by opening an issue here.
 
 ### License
 The MIT License (MIT)
