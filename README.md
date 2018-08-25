@@ -1,7 +1,7 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
     <style>
-        * {
+        body {
             font-family: 'Lato', 'Arial', sans-serif;
         }
     </style>
