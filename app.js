@@ -9,6 +9,15 @@ var budgetController = (function() {
         this.quantity = quantity;
         this.unitCost = unitCost;
         this.amount = amount;
+        this.percentage = -1;
+    }
+
+    Expense.prototype.calcPercentage = function() {
+        this.percentage = this.amount / data.budget * 100;
+    }
+
+    Expense.prototype.getPercentage = function() {
+        return this.percentage;
     }
 
     var data = {
@@ -44,7 +53,7 @@ var budgetController = (function() {
 
         },
 
-        deleteListItem: function(ID) {
+        deleteItem: function(ID) {
             var ids, index;
 
             ids = data.allItems.map(function(cur) {
@@ -77,6 +86,17 @@ var budgetController = (function() {
             // 4. Calculate percentage
             data.percentage = Math.round((data.totalExpenses / data.budget) * 100);
 
+        },
+
+        calculatePercentages: function() {
+            data.allItems.forEach(function(cur) { cur.calcPercentage();});
+        },
+
+        getPercentages: function() {
+            var allPerc = data.allItems.map(function(cur) {
+                return cur.getPercentage();
+            });
+            return allPerc;
         },
 
         getTotalExpenses: function() {
@@ -224,6 +244,18 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     }
 
+    var updatePercentages = function() {
+
+        // 1. Calculate percentages
+        budgetCtrl.calculatePercentages();
+
+        // 2. Read percentages from the budget controller
+        var percentages = budgetCtrl.getPercentages();
+
+        // 3. Update the UI with the new percentages
+        console.log(percentages);
+    }
+
     var ctrlAddItem = function() {
         var input, newItem;
 
@@ -250,7 +282,7 @@ var controller = (function(budgetCtrl, UICtrl) {
             }
     
             // 7. Calculate and update percentage
-
+            updatePercentages();
         }
 
     }
@@ -266,7 +298,7 @@ var controller = (function(budgetCtrl, UICtrl) {
             ID = parseInt(splitID[1]);
 
             // 1. Delete the item from the data structure
-            budgetCtrl.deleteListItem(ID);
+            budgetCtrl.deleteItem(ID);
     
             // 2. Delete the item from the UI
             UICtrl.deleteListItem(itemID);
