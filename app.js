@@ -134,7 +134,24 @@ var UIController = (function() {
         percentageLabel: '.budget__expenses--percentage',
         container: '.expenses__list',
         expensePercLabel: '.item__percentage'
-    }
+    };
+
+    var formatNumber = function(num) {
+        var int, decimal;
+        num = num.toFixed(2).split('.');
+
+        int = num[0];
+        decimal = num[1];
+
+        if(int.length > 3 && int.length < 7) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+        } else if(int.length > 6 && int.length <10) {
+            int = int.substr(0, int.length - 6) + ',' + int.substr(int.length - 5, 3) + ',' + int.substr(int.length-3, 3);
+        }
+
+        return int + '.' + decimal;
+
+    };
     
     return {
         getInput: function() {
@@ -158,8 +175,8 @@ var UIController = (function() {
             newHtml = newHtml.replace('%description%', obj.description);
             newHtml = newHtml.replace('%type%', obj.type);
             newHtml = newHtml.replace('%quantity%', obj.quantity);
-            newHtml = newHtml.replace('%unitCost%', obj.unitCost);
-            newHtml = newHtml.replace('%amount%', obj.amount);
+            newHtml = newHtml.replace('%unitCost%', formatNumber(obj.unitCost));
+            newHtml = newHtml.replace('%amount%', formatNumber(obj.amount));
 
             // Insert the HTML into the DOM
             document.querySelector(DOMstrings.lastLineOfList).insertAdjacentHTML('beforebegin', newHtml);
@@ -187,13 +204,16 @@ var UIController = (function() {
         },
 
         displayTotalExpenses: function(total) {
-            document.querySelector(DOMstrings.expensesLabel).textContent = '- ' + total;
-            document.querySelector(DOMstrings.expensesLabelSub).textContent = '- ' + total;
+            document.querySelector(DOMstrings.expensesLabel).textContent = '- ' + formatNumber(total);
+            document.querySelector(DOMstrings.expensesLabelSub).textContent = '- ' + formatNumber(total);
         },
 
         displayBudget: function(budget) {
-            document.querySelector(DOMstrings.balanceLabel).textContent = budget.balance;
+            document.querySelector(DOMstrings.balanceLabel).textContent = formatNumber(budget.balance);
             document.querySelector(DOMstrings.percentageLabel).textContent = budget.percentage + '%';
+            // if(budget.budget) {
+            //     document.querySelector('.add__budget').value = formatNumber(budget.budget);
+            // }
         },
 
         displayPercentage: function(parcArr) {
@@ -329,6 +349,8 @@ var controller = (function(budgetCtrl, UICtrl) {
         init: function() {
             console.log('Chanwhe Kim: the application has started. :)')
             setupEventListeners();
+            UICtrl.displayBudget({balance: 0, percentage: '---'});
+            UICtrl.displayTotalExpenses(0);
         }
     }
 
