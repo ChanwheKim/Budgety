@@ -220,11 +220,19 @@ var UIController = (function() {
             var fields = document.querySelectorAll(DOMstrings.expensePercLabel);
             fields.forEach(function(cur, index) {
                 if(parcArr[index] > 0) {
-                    cur.textContent = parcArr[index] + '%';
+                    cur.textContent = parcArr[index].toFixed(1) + '%';
                 } else {
                     cur.textContent = '--%';
                 }
             })
+        },
+
+        displayMonth: function() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.toString().slice(4, 7);
+
+            document.querySelector('.budget__title--month').textContent = month + ' ' + year;
         },
 
         getDOMstrings: function() {
@@ -277,7 +285,7 @@ var controller = (function(budgetCtrl, UICtrl) {
     }
 
     var updatePercentages = function() {
-
+        
         // 1. Calculate percentages
         budgetCtrl.calculatePercentages();
 
@@ -351,6 +359,7 @@ var controller = (function(budgetCtrl, UICtrl) {
             setupEventListeners();
             UICtrl.displayBudget({balance: 0, percentage: '---'});
             UICtrl.displayTotalExpenses(0);
+            UICtrl.displayMonth();
         }
     }
 
