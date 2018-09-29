@@ -1,11 +1,3 @@
-<head>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
-    <style>
-        body {
-            font-family: 'Lato', 'Arial', sans-serif;
-        }
-    </style>
-</head>
 
 ## Budgety
 &nbsp;
@@ -43,6 +35,7 @@ As you can see, some tasks have to do with the user interface and some with inte
 <br>
 <br>
 <img src='img/Budgety__architecture-step-1.jpg' width='100%' alt=''>
+
 ### Planning Step-2
 <img src='img/Budgety__step-2.jpg' height='400px' width='100%' alt=''>
 In Step-2, I dealt with the functionality of deleting an item from data structure and user interface. I added event handler to the delete button. The application will delete the entire row as soon as the user clicks the delete button as well as from the the data structure.
@@ -55,7 +48,15 @@ The followings are that I built in this step.<br>
 &nbsp;-Update the UI<br>
 <br>
 <img src='img/Budgety__architecture-step-2.jpg' width='100%' alt=''>
+
 ### Planning Step-3
+<img src='img/Budgety__step-3.jpg' height='400px' width='100%' alt=''>
+Lastly, I added a couple of methods to calculate percentages of each expense which represent in percentage of the total budget and to display them on the UI.
+<br><br>
+I also added methods to display current month and year, and to format numbers.
+<br><br>
+<img src='img/Budgety__architecture-step-3.jpg' width='100%' alt=''>
+
 ### Bug / Feature request
 If you find a bug, please kindly open an issue here with your expected result.
 
